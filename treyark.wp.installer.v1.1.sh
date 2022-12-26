@@ -6,10 +6,10 @@
 #
 #
 # Make the script executable with this command: 
-# $ sudo chmod +x treyark.wp.installer.v1.0.sh
+# $ sudo chmod +x treyark.wp.installer.v1.1.sh
 
 # Run the script w/ this command: 
-# $ sudo ./treyark.wp.installer.v1.0.sh
+# $ sudo ./treyark.wp.installer.v1.1.sh
 
 sudo apt update
 sleep 1
