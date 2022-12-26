@@ -5,6 +5,9 @@
 #...................................Header
 #
 #
+# You can curl this script with this command:
+# $ curl -O https://raw.githubusercontent.com/LanceTreyark/treyark.wp.installer.v1.1/main/treyark.wp.installer.v1.1.sh
+#
 # Make the script executable with this command: 
 # $ sudo chmod +x treyark.wp.installer.v1.1.sh
 
