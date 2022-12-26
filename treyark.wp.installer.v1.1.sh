@@ -5,13 +5,11 @@
 #...................................Header
 #
 #
-# To use this script, you can save it as a .sh file on your server's home directory "cd ~/"
-# Create a .sh file using nano
-# sudo mkdir ~/treyarkMedia && sudo nano ~/treyarkMedia/treyark.wp.installer.v1.0.sh
-# Now paste in this code, save and exit.
+# Make the script executable with this command: 
+# $ sudo chmod +x treyark.wp.installer.v1.0.sh
 
-# Make it executable and run the script with this command:
-# sudo chmod +x ~/treyarkMedia/treyark.wp.installer.v1.0.sh && cd ~/treyarkMedia && sudo ./treyark.wp.installer.v1.0.sh && cd -
+# Run the script w/ this command: 
+# $ sudo ./treyark.wp.installer.v1.0.sh
 
 sudo apt update
 sleep 1
@@ -81,12 +79,8 @@ echo " "
 rm /tmp/logoexample.txt
 rm /tmp/logoexample2.txt
 
-
-
 #...................................Part 2
 #................................Script Begin
-
-
 
 # Ask the user for: Domain name, Admin Email, New DB Username & Pwd:
 
@@ -158,7 +152,7 @@ echo "Continuing script..."
 echo " "
 #-------------------------------PAUSE------------OUT
 
-## Create a config file for our website  & add this text into the file
+# Create a config file for our website  & add this text into the file
 
 cat >/etc/apache2/sites-available/$var_DomainName.conf <<EOF
 
@@ -195,19 +189,6 @@ sudo mysql -uroot -p$*PASSWORD_OF_MYSQL_ROOT_USER* -e "GRANT ALL ON $var_Databas
 sleep 1
 sudo mysql -uroot -p$*PASSWORD_OF_MYSQL_ROOT_USER* -e "FLUSH PRIVILEGES;"
 sleep 1
-
-#mysql -uroot -p$*PASSWORD_OF_MYSQL_ROOT_USER* -e "CREATE DATABASE $MAINDB"
-#mysql -uroot -p$*PASSWORD_OF_MYSQL_ROOT_USER* -e "GRANT ALL PRIVILEGES ON $MAINDB.* TO $MAINDB@localhost IDENTIFIED BY '$PASSWDDB!'"
-
-
-
-
-#
-#mysql -e "CREATE DATABASE $var_DatabaseName DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci"
-#mysql -e "GRANT ALL ON $var_DatabaseName.* TO "$var_DatabaseUserName"@"localhost" IDENTIFIED BY "$var_DatabasePassword"
-#mysql -e "FLUSH PRIVILEGES"
-
-
 
 #-------------------------------PAUSE------------IN
 sleep 1
@@ -292,7 +273,7 @@ read -s -p ""
 echo "Continuing script..."
 echo " "
 #-------------------------------PAUSE------------OUT
-#at some point delete this file:
+
 #sudo rm -r /tmp/script3r_$var_Date
 sudo chown -R www-data:www-data /var/www/$var_DomainName/public_html
 
@@ -369,17 +350,10 @@ echo "Continuing script..."
 echo " "
 #-------------------------------PAUSE------------OUT
 
-
 # Comment out the ending two lines of code before we replace them at the bottom of the file :
 sudo sed -i "/ABSPATH/i /*" /var/www/$var_DomainName/public_html/wp-config.php 
 
 sudo sed -i "/require_once/a */" /var/www/$var_DomainName/public_html/wp-config.php 
-
-#Example of append new line above, and below
-# Above 
-# sudo sed -i "/TARGET_PATTERN/i NEW_CODE_LINE_HERE" /var/www/$var_DomainName/public_html/wp-config.php
-# Below
-# sudo sed -i "/TARGET_PATTERN/a NEW_CODE_LINE_HERE" /var/www/$var_DomainName/public_html/wp-config.php
 
 #-------------------------------PAUSE------------IN
 sleep 1
@@ -391,7 +365,7 @@ echo "Continuing script..."
 echo " "
 #-------------------------------PAUSE------------OUT
 
-
+# Add FS_Method -Direct
 sudo sed -i "/DB_COLLATE/a define('FS_METHOD', 'direct');" /var/www/$var_DomainName/public_html/wp-config.php
 
 #-------------------------------PAUSE------------IN
@@ -404,15 +378,15 @@ echo "Continuing script..."
 echo " "
 #-------------------------------PAUSE------------OUT
 
-# Replace last two lines of code
-secondToLastLine="if ( ! defined( 'ABSPATH' ) ) {"
-thirdToLastLine="        define( 'ABSPATH', __DIR__ . '/' ); }"
+# Replace last three lines of code
+thirdToLastLine="if ( ! defined( 'ABSPATH' ) ) {"
+secondToLastLine="        define( 'ABSPATH', __DIR__ . '/' ); }"
 LastLine="require_once ABSPATH . 'wp-settings.php';"
 
 echo " " >> /var/www/$var_DomainName/public_html/wp-config.php
 echo " " >> /var/www/$var_DomainName/public_html/wp-config.php
-echo "$secondToLastLine" >> /var/www/$var_DomainName/public_html/wp-config.php
 echo "$thirdToLastLine" >> /var/www/$var_DomainName/public_html/wp-config.php
+echo "$secondToLastLine" >> /var/www/$var_DomainName/public_html/wp-config.php
 echo " " >> /var/www/$var_DomainName/public_html/wp-config.php
 echo " " >> /var/www/$var_DomainName/public_html/wp-config.php
 echo "$LastLine" >> /var/www/$var_DomainName/public_html/wp-config.php
