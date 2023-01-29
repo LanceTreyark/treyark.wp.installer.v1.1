@@ -1,11 +1,10 @@
-# treyark.wp.installer.v1.1
-December 26th 2022
 
-This script is designed to run on this setup: 
-BUILDING A FULL STACK PRODUCTION SERVER (Debian 11) 
-https://treyark.substack.com/p/building-a-full-stack-production 
+# WARNING!
+# THIS CODE IS FOR HISTORICAL REFERENCE ONLY
+# THIS CODE IS GARBAGE, DON'T WASTE YOU TIME!!!
 
-All of the documentation and source material can be found there on subStack
-
-Preview
-https://youtu.be/KqkYxLG8W7I
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="https://media.treyark.com/wp-content/uploads/2023/01/warno.jpg">
+ <source media="(prefers-color-scheme: light)" srcset="https://media.treyark.com/wp-content/uploads/2023/01/warno.jpg">
+ <img alt="Large Warning Symbol" src="https://media.treyark.com/wp-content/uploads/2023/01/warno.jpg">
+</picture>
